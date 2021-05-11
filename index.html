@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stepped Demo UI</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body style="background: #FFF; margin: 0; padding: 0; font-family: sans-serif;">
+
+        <!-- Column -->
+        <div style="margin: 0 auto; background: #FFF; padding: 0rem;">
+
+            <!-- Module start -->
+            <section class="demo-step-ui menu-is-active">
+
+                <!-- Title text -->
+                <div class="demo-step-ui__title-section">
+                    <div class="demo-step-ui__title-text">
+                        <span class="demo-step-ui__title-section--demo">Demo Product:</span>
+                        <h2 class="demo-step-ui__title-section--line-1">Arrow</h2>
+                        <h2 class="demo-step-ui__title-section--line-2">Sofa</h2>
+                    </div>
+                    <div class="demo-step-ui__title-section__ratings">
+                        <svg class="demo-step-ui__line-icon--filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
+                        </svg>
+                        <svg class="demo-step-ui__line-icon--filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
+                        </svg>
+                        <svg class="demo-step-ui__line-icon--filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
+                        </svg>
+                        <svg class="demo-step-ui__line-icon--filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
+                        </svg>
+                        <svg class="demo-step-ui__line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
+                        </svg>
+                        <div class="demo-step-ui__title-section__reviews">
+                            135 Reviews
+                        </div>
+                    </div>
+                    <button class="demo-step-ui__menu-toggle-button button--plain">
+                        <!-- <span>Show Menu</span> -->
+                        <span class="demo-step-ui__menu-toggle-button__label-show">Show Menu</span>
+                        <span class="demo-step-ui__menu-toggle-button__label-hide">Hide Menu</span>
+                        <svg class="demo-step-ui__line-icon demo-step-ui__menu-toggle-button__icon--chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <polyline points="14 18 8 12 14 6" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Canvas of product demo (will replace the <img> element here) -->
+                <div class="demo-step-ui__canvas-container">
+                    <img id="renderCanvas" src="sofa.png" alt="">
+                </div>
+
+                <!-- Mini menu -->
+                <ul class="demo-step-ui__mini-menu">
+                    <li class="demo-step-ui__mini-menu__item">
+                        <button class="demo-step-ui__mini-menu__button button--plain">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="demo-step-ui__line-icon" viewBox="0 0 24 24">
+                                <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+                                <circle cx="12" cy="13" r="3" />
+                            </svg>
+                            <span class="demo-step-ui__mini-menu__button__label">Take Screenshot</span>
+                        </button>
+                        <!-- <div class="demo-step-ui__mini-menu__popup">
+                            <div class="demo-step-ui__mini-menu__popup__content">
+                                <div class="demo-step-ui__gesture-icons--touch">
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-rotate.svg" alt="Rotate" title="Touch and drag to rotate">
+                                        Rotate
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-pan.svg" alt="Pan" title="Drag with two fingers to pan">
+                                        Pan
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-zoom.svg" alt="Zoom" title="Scroll to zoom">
+                                        Zoom
+                                    </div>
+                                </div>
+                                <div class="demo-step-ui__gesture-icons--mouse">
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-rotate.svg" alt="Rotate" title="Click and drag to rotate">
+                                        Rotate
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-pan.svg" alt="Pan" title="Right-click and drag to pan">
+                                        Pan
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-zoom.svg" alt="Zoom" title="Scroll to zoom">
+                                        Zoom
+                                    </div>
+                                </div>
+                                <button class="demo-step-ui__mini-menu__popup__close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="demo-step-ui__line-icon" viewBox="0 0 10 10">
+                                        <line x1="9" y1="1" x2="1" y2="9" />
+                                        <line x1="1" y1="1" x2="9" y2="9" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div> -->
+                    </li>
+                    <li class="demo-step-ui__mini-menu__item">
+                        <button class="demo-step-ui__mini-menu__button button--plain">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="demo-step-ui__line-icon" viewBox="0 0 24 24">
+                                <path d="M4 7v-1a2 2 0 0 1 2 -2h1" />
+                                <path d="M4 17v1a2 2 0 0 0 2 2h1" />
+                                <path d="M17 4h1a2 2 0 0 1 2 2v1" />
+                                <path d="M17 20h1a2 2 0 0 0 2 -2v-1" />
+                                <polyline points="12 7 17 9.5 17 14.5 12 17 7 14.5 7 9.5 12 7" />
+                                <line x1="7" y1="9.5" x2="12" y2="12" />
+                                <line x1="17" y1="9.5" x2="12" y2="12" />
+                                <line x1="12" y1="17" x2="12" y2="12" />
+                            </svg>
+                            <span class="demo-step-ui__mini-menu__button__label">View in AR</span>
+                        </button>
+                        <!-- <div class="demo-step-ui__mini-menu__popup">
+                            <div class="demo-step-ui__mini-menu__popup__content">
+                                <div class="demo-step-ui__gesture-icons--touch">
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-rotate.svg" alt="Rotate" title="Touch and drag to rotate">
+                                        Rotate
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-pan.svg" alt="Pan" title="Drag with two fingers to pan">
+                                        Pan
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-zoom.svg" alt="Zoom" title="Scroll to zoom">
+                                        Zoom
+                                    </div>
+                                </div>
+                                <div class="demo-step-ui__gesture-icons--mouse">
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-rotate.svg" alt="Rotate" title="Click and drag to rotate">
+                                        Rotate
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-pan.svg" alt="Pan" title="Right-click and drag to pan">
+                                        Pan
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-zoom.svg" alt="Zoom" title="Scroll to zoom">
+                                        Zoom
+                                    </div>
+                                </div>
+                                <button class="demo-step-ui__mini-menu__popup__close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="demo-step-ui__line-icon" viewBox="0 0 10 10">
+                                        <line x1="9" y1="1" x2="1" y2="9" />
+                                        <line x1="1" y1="1" x2="9" y2="9" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div> -->
+                    </li>
+                    <li class="demo-step-ui__mini-menu__item">
+                        <button class="demo-step-ui__mini-menu__button button--plain">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="demo-step-ui__line-icon" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="9" />
+                                <line x1="12" y1="8" x2="12.01" y2="8" />
+                                <polyline points="11 12 12 12 12 16 13 16" />
+                            </svg>
+                            <span class="demo-step-ui__mini-menu__button__label">Guide</span>
+                        </button>
+                        <!-- <div class="demo-step-ui__mini-menu__popup">
+                            <div class="demo-step-ui__mini-menu__popup__content">
+                                <div class="demo-step-ui__gesture-icons--touch">
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-rotate.svg" alt="Rotate" title="Touch and drag to rotate">
+                                        Rotate
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-pan.svg" alt="Pan" title="Drag with two fingers to pan">
+                                        Pan
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-hand-zoom.svg" alt="Zoom" title="Scroll to zoom">
+                                        Zoom
+                                    </div>
+                                </div>
+                                <div class="demo-step-ui__gesture-icons--mouse">
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-rotate.svg" alt="Rotate" title="Click and drag to rotate">
+                                        Rotate
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-pan.svg" alt="Pan" title="Right-click and drag to pan">
+                                        Pan
+                                    </div>
+                                    <div class="demo-step-ui__gesture-icons__icon">
+                                        <img src="icon-mouse-zoom.svg" alt="Zoom" title="Scroll to zoom">
+                                        Zoom
+                                    </div>
+                                </div>
+                                <button class="demo-step-ui__mini-menu__popup__close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="demo-step-ui__line-icon" viewBox="0 0 10 10">
+                                        <line x1="9" y1="1" x2="1" y2="9" />
+                                        <line x1="1" y1="1" x2="9" y2="9" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div> -->
+                    </li>
+                </ul>
+
+                <!-- Customization menu -->
+                <aside class="demo-step-ui__menu">
+                    <div class="demo-step-ui__menu-top">
+                        <span class="demo-step-ui__menu-top__text">Customize:</span>
+                        <button class="demo-step-ui__menu-toggle-button">
+                            <svg class="demo-step-ui__line-icon demo-step-ui__menu-toggle-button__icon--chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <polyline points="14 18 8 12 14 6" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="demo-step-ui__menu-steps">
+
+                        <!-- Options #1 -->
+                        <div class="demo-step-ui__menu-item">
+                            <h4 class="demo-step-ui__menu-item__header">Material &amp; Color: <span class="demo-step-ui__menu-item__header--highlight">Navy</span></h4>
+                            <ul class="demo-step-ui__menu-item__color-options">
+                                <li class="demo-step-ui__menu-item__color-item" title="Crimson">
+                                    <input type="radio" name="color-options-1" value="color-value-2" id="color-value-2">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-2" style="background-color: #8b2222;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Tangerine">
+                                    <input type="radio" name="color-options-1" value="color-value-3" id="color-value-3">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-3" style="background-color: #df820a;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Sunburst">
+                                    <input type="radio" name="color-options-1" value="color-value-11" id="color-value-11">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-11" style="background-color: #eff306;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Green">
+                                    <input type="radio" name="color-options-1" value="color-value-4" id="color-value-4">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-4" style="background-color: #09b481;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Aqua Marine">
+                                    <input type="radio" name="color-options-1" value="color-value-12" id="color-value-12">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-12" style="background-color: #27cece;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Navy">
+                                    <input type="radio" name="color-options-1" value="color-value-1" id="color-value-1" checked>
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-1" style="background-color: #26315f;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Lilac">
+                                    <input type="radio" name="color-options-1" value="color-value-5" id="color-value-5">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-5" style="background-color: #672eeb;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Synth Wave Pink">
+                                    <input type="radio" name="color-options-1" value="color-value-6" id="color-value-6">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-6" style="background-color: #bc0bc2;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Eggshell White">
+                                    <input type="radio" name="color-options-1" value="color-value-8" id="color-value-8">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-8" style="background-color: #ffffff;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Slate">
+                                    <input type="radio" name="color-options-1" value="color-value-9" id="color-value-9">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-9" style="background-color: #8b8b8b;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Gray">
+                                    <input type="radio" name="color-options-1" value="color-value-10" id="color-value-10">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-10" style="background-color: #464646;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Brown">
+                                    <input type="radio" name="color-options-1" value="color-value-7" id="color-value-7">
+                                    <label class="demo-step-ui__menu-item__color-button" for="color-value-7" style="background-color: #5c462a;"></label>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Options #2 -->
+                        <div class="demo-step-ui__menu-item item--inactive--right">
+                            <h4 class="demo-step-ui__menu-item__header">Leg Type: <span class="demo-step-ui__menu-item__header--highlight">Metal, graphite</span></h4>
+                            <div class="demo-step-ui__menu-item__input-select">
+                                <select name="select1" id="select1">
+                                    <option value="select1-type1">Metal</option>
+                                    <option value="select1-type2">Wooden</option>
+                                    <option value="select1-type3">Plastic</option>
+                                    <option value="select1-type4">Dark Matter</option>
+                                </select>
+                                <svg class="demo-step-ui__line-icon demo-step-ui__menu-item__input-select__icon--chevrons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <polyline points="16 8 12 4 8 8" />
+                                    <polyline points="16 16 12 20 8 16" />
+                                </svg>
+                            </div>
+                            
+                            <ul class="demo-step-ui__menu-item__color-options">
+                                <li class="demo-step-ui__menu-item__color-item" title="Gold">
+                                    <input type="radio" name="color-options-2" value="leg-color-1" id="leg-color-1">
+                                    <label class="demo-step-ui__menu-item__color-button" for="leg-color-1" style="background-color: #e9d76f;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="White">
+                                    <input type="radio" name="color-options-2" value="leg-color-2" id="leg-color-2">
+                                    <label class="demo-step-ui__menu-item__color-button" for="leg-color-2" style="background-color: #e9e9e9;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Polished Silver">
+                                    <input type="radio" name="color-options-2" value="leg-color-3" id="leg-color-3">
+                                    <label class="demo-step-ui__menu-item__color-button" for="leg-color-3" style="background-color: #8b8b8b;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Metallic">
+                                    <input type="radio" name="color-options-2" value="leg-color-4" id="leg-color-4">
+                                    <label class="demo-step-ui__menu-item__color-button" for="leg-color-4" style="background-color: #454545;"></label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__color-item" title="Graphite">
+                                    <input type="radio" name="color-options-2" value="leg-color-5" id="leg-color-5" checked>
+                                    <label class="demo-step-ui__menu-item__color-button" for="leg-color-5" style="background-color: #222222;"></label>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Options #3 -->
+                        <div class="demo-step-ui__menu-item item--inactive--right">
+                            <h4 class="demo-step-ui__menu-item__header">Add-ons &amp; Accessories: <span class="demo-step-ui__menu-item__header--highlight">Chaise, lumbar pillows</span></h4>
+                            <ul class="demo-step-ui__menu-item__checkbox-buttons">
+                                <li class="demo-step-ui__menu-item__checkbox-item">
+                                    <input type="checkbox" id="demo-checkbox-1" value="chaise" checked>
+                                    <label for="demo-checkbox-1" class="demo-step-ui__menu-item__checkbox-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.3 65.4">
+                                            <line class="line-icon--line" x1="21.5" y1="19" x2="51" y2="1" />
+                                            <line class="line-icon--line" x1="25" y1="21.2" x2="54.4" y2="3.2" />
+                                            <line class="line-icon--line" x1="25" y1="31.9" x2="54.4" y2="13.9" />
+                                            <line class="line-icon--line" x1="39.9" y1="40.9" x2="66.7" y2="24.5" />
+                                            <line class="line-icon--line" x1="43.9" y1="43.5" x2="70.3" y2="27.3" />
+                                            <line class="line-icon--line" x1="66.7" y1="17.9" x2="70.3" y2="15.7" />
+                                            <line class="line-icon--line" x1="70.3" y1="15.7" x2="54.4" y2="5.8" />
+                                            <line class="line-icon--line" x1="66.7" y1="17.9" x2="54.4" y2="10.3" />
+                                            <line class="line-icon--line" x1="66.7" y1="17.9" x2="66.7" y2="29.5" />
+                                            <line class="line-icon--line" x1="70.3" y1="15.7" x2="70.3" y2="27.3" />
+                                            <line class="line-icon--line" x1="54.4" y1="13.9" x2="54.4" y2="3.2" />
+                                            <line class="line-icon--line" x1="54.4" y1="3.2" x2="51" y2="1" />
+                                            <line class="line-icon--line" x1="39.5" y1="23" x2="39.5" y2="12.3" />
+                                            <line class="line-icon--line" x1="39.5" y1="12.3" x2="36.1" y2="10.1" />
+                                            <line class="line-icon--line" x1="36.5" y1="59.4" x2="50.1" y2="51.1" />
+                                            <line class="line-icon--line" x1="36.5" y1="64.4" x2="36.5" y2="59.4" />
+                                            <line class="line-icon--line" x1="8.1" y1="31.5" x2="4.6" y2="29.4" />
+                                            <line class="line-icon--line" x1="8.1" y1="31.5" x2="8.1" y2="36.1" />
+                                            <line class="line-icon--line" x1="36.5" y1="59.4" x2="22.4" y2="50.7" />
+                                            <line class="line-icon--line" x1="8.1" y1="31.5" x2="25" y2="21.2" />
+                                            <line class="line-icon--line" x1="13.1" y1="39.2" x2="25" y2="31.9" />
+                                            <line class="line-icon--line" x1="18.8" y1="47.3" x2="1" y2="36.1" />
+                                            <line class="line-icon--line" x1="18.8" y1="47.3" x2="22.4" y2="45" />
+                                            <line class="line-icon--line" x1="18.8" y1="47.3" x2="18.8" y2="58.8" />
+                                            <line class="line-icon--line" x1="22.4" y1="55.7" x2="22.4" y2="56.6" />
+                                            <path class="line-icon--line" d="M39.5,23c3.4,1.4,8.3,4.3,11.4,6.8c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--line" d="M54.4,13.9c3.4,1.4,8.3,4.3,11.4,6.8c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--has-fill" d="M50,48.7c0-0.6-0.3-1.1-0.7-1.4C46.2,44.7,28.4,33.3,25,31.9V21.2L21.5,19L4.6,29.4v4.5L22.4,45v10.6l14,8.8l13.6-8.4v-5L50,48.7z" />
+                                            <polyline class="line-icon--line" points="4.6,33.9 1,36.1 1,47.7 18.8,58.8 22.4,56.6" />
+                                        </svg>
+                                        <div class="demo-step-ui__menu-item__checkbox-button__text">Chaise</div>
+                                        <span class="demo-step-ui__menu-item__checkbox-button__checkbox">
+                                            <svg class="demo-step-ui__line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 8">
+                                                <polyline points="1 4 4 7 10 1" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__checkbox-item">
+                                    <input type="checkbox" id="demo-checkbox-2" value="ottoman">
+                                    <label for="demo-checkbox-2" class="demo-step-ui__menu-item__checkbox-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.3 65.4">
+                                            <line class="line-icon--line" x1="4.6" y1="32.2" x2="51" y2="3.8" />
+                                            <line class="line-icon--line" x1="8.1" y1="34.3" x2="54.4" y2="6" />
+                                            <line class="line-icon--line" x1="22.4" y1="47.8" x2="4.6" y2="36.7" />
+                                            <line class="line-icon--line" x1="13.1" y1="42" x2="54.4" y2="16.7" />
+                                            <line class="line-icon--line" x1="22.4" y1="54.4" x2="66.7" y2="27.3" />
+                                            <line class="line-icon--line" x1="60.1" y1="36.3" x2="70.3" y2="30.1" />
+                                            <line class="line-icon--line" x1="22.4" y1="59.4" x2="43.7" y2="46.4" />
+                                            <line class="line-icon--line" x1="18.8" y1="50.1" x2="1" y2="38.9" />
+                                            <line class="line-icon--line" x1="1" y1="38.9" x2="4.6" y2="36.7" />
+                                            <line class="line-icon--line" x1="66.7" y1="20.7" x2="70.3" y2="18.5" />
+                                            <line class="line-icon--line" x1="18.8" y1="50.1" x2="22.4" y2="47.8" />
+                                            <line class="line-icon--line" x1="70.3" y1="18.5" x2="54.4" y2="8.6" />
+                                            <line class="line-icon--line" x1="66.7" y1="20.7" x2="54.4" y2="13.1" />
+                                            <line class="line-icon--line" x1="18.8" y1="50.1" x2="18.8" y2="61.6" />
+                                            <line class="line-icon--line" x1="22.4" y1="47.8" x2="22.4" y2="59.4" />
+                                            <line class="line-icon--line" x1="66.7" y1="20.7" x2="66.7" y2="32.3" />
+                                            <line class="line-icon--line" x1="70.3" y1="18.5" x2="70.3" y2="30.1" />
+                                            <line class="line-icon--line" x1="18.8" y1="61.6" x2="22.4" y2="59.4" />
+                                            <line class="line-icon--line" x1="54.4" y1="16.7" x2="54.4" y2="6" />
+                                            <line class="line-icon--line" x1="54.4" y1="6" x2="51" y2="3.8" />
+                                            <line class="line-icon--line" x1="8.1" y1="34.3" x2="4.6" y2="32.2" />
+                                            <line class="line-icon--line" x1="4.6" y1="36.7" x2="4.6" y2="32.2" />
+                                            <line class="line-icon--line" x1="8.1" y1="34.3" x2="8.1" y2="38.9" />
+                                            <line class="line-icon--line" x1="25" y1="34.7" x2="25" y2="24" />
+                                            <line class="line-icon--line" x1="39.5" y1="25.8" x2="39.5" y2="15.1" />
+                                            <line class="line-icon--line" x1="25" y1="24" x2="21.5" y2="21.8" />
+                                            <line class="line-icon--line" x1="39.5" y1="15.1" x2="36.1" y2="12.9" />
+                                            <line class="line-icon--line" x1="55.8" y1="54.9" x2="70.3" y2="46" />
+                                            <line class="line-icon--line" x1="55.8" y1="54.9" x2="43.5" y2="47.2" />
+                                            <line class="line-icon--line" x1="55.8" y1="54.9" x2="55.8" y2="59.9" />
+                                            <path class="line-icon--line" d="M39.5,25.8c3.4,1.4,8.3,4.3,11.4,6.8c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--line" d="M54.4,16.7c3.4,1.4,8.3,4.3,11.4,6.8c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--line" d="M25,34.7c3.4,1.4,8.3,4.3,11.4,6.8c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--has-fill" d="M70.3,46l-0.1-2.4c0-0.6-0.3-1.1-0.7-1.5c-2.5-2-6.1-4.2-9.2-5.7c-0.6-0.3-1.4-0.3-1.9,0.1l-14,8.6c-0.2,0.1-0.4,0.4-0.5,0.7l-0.3,1.5v5l12.3,7.7L70.3,51V46z" />
+                                            <polyline class="line-icon--line" points="1,38.9 1,50.5 18.8,61.6 " />
+                                        </svg>
+                                        <div class="demo-step-ui__menu-item__checkbox-button__text">Ottoman</div>
+                                        <span class="demo-step-ui__menu-item__checkbox-button__checkbox">
+                                            <svg class="demo-step-ui__line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 8">
+                                                <polyline points="1 4 4 7 10 1" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                </li>
+                                <li class="demo-step-ui__menu-item__checkbox-item">
+                                    <input type="checkbox" id="demo-checkbox-3" value="pillows" checked>
+                                    <label for="demo-checkbox-3" class="demo-step-ui__menu-item__checkbox-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-443 248.6 71.3 65.4">
+                                            <line class="line-icon--line" x1="-438.4" y1="280.8" x2="-392.1" y2="252.4" />
+                                            <line class="line-icon--line" x1="-434.9" y1="282.9" x2="-388.6" y2="254.6" />
+                                            <line class="line-icon--line" x1="-401.9" y1="273.4" x2="-399.2" y2="271.8" />
+                                            <line class="line-icon--line" x1="-416.9" y1="282.6" x2="-414" y2="280.9" />
+                                            <line class="line-icon--line" x1="-429.9" y1="290.6" x2="-429" y2="290" />
+                                            <line class="line-icon--line" x1="-420.6" y1="303" x2="-376.3" y2="275.9" />
+                                            <line class="line-icon--line" x1="-420.6" y1="308" x2="-372.7" y2="278.7" />
+                                            <line class="line-icon--line" x1="-376.3" y1="269.3" x2="-372.7" y2="267.1" />
+                                            <line class="line-icon--line" x1="-372.7" y1="267.1" x2="-388.6" y2="257.2" />
+                                            <line class="line-icon--line" x1="-376.3" y1="269.3" x2="-388.2" y2="261.9" />
+                                            <line class="line-icon--line" x1="-424.2" y1="298.7" x2="-424.2" y2="310.2" />
+                                            <line class="line-icon--line" x1="-420.6" y1="296.4" x2="-420.6" y2="308" />
+                                            <line class="line-icon--line" x1="-376.3" y1="269.3" x2="-376.3" y2="280.9" />
+                                            <line class="line-icon--line" x1="-372.7" y1="267.1" x2="-372.7" y2="278.7" />
+                                            <line class="line-icon--line" x1="-424.2" y1="310.2" x2="-420.6" y2="308" />
+                                            <line class="line-icon--line" x1="-388.6" y1="261.3" x2="-388.6" y2="254.6" />
+                                            <line class="line-icon--line" x1="-388.6" y1="254.6" x2="-392.1" y2="252.4" />
+                                            <line class="line-icon--line" x1="-434.9" y1="282.9" x2="-438.4" y2="280.8" />
+                                            <line class="line-icon--line" x1="-438.4" y1="285.3" x2="-438.4" y2="280.8" />
+                                            <line class="line-icon--line" x1="-434.9" y1="282.9" x2="-434.9" y2="287.5" />
+                                            <line class="line-icon--line" x1="-418" y1="280.2" x2="-418" y2="272.6" />
+                                            <line class="line-icon--line" x1="-403.5" y1="270.2" x2="-403.5" y2="263.7" />
+                                            <line class="line-icon--line" x1="-418" y1="272.6" x2="-421.5" y2="270.4" />
+                                            <line class="line-icon--line" x1="-403.5" y1="263.7" x2="-406.9" y2="261.5" />
+                                            <path class="line-icon--line" d="M-401.7,275.2c3.2,1.5,7,3.9,9.6,6c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--line" d="M-386.8,266c3.2,1.5,7.1,3.9,9.7,6c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--line" d="M-416.5,283.9c3.3,1.5,7.3,4,10,6.1c0.4,0.4,0.7,0.9,0.7,1.4l0.1,2.4" />
+                                            <path class="line-icon--has-fill" d="M-412.7,283.5c4.3-1.3,8-3.5,10.9-6.7c0.4-2.6-0.5-4.9-2-7c-4.2,1.3-7.8,3.5-10.9,6.7C-414.8,279-414.1,281.4-412.7,283.5z" />
+                                            <path class="line-icon--has-fill" d="M-397.9,274.5c4.3-1.3,8-3.5,10.9-6.7c0.4-2.6-0.5-4.9-2-7c-4.2,1.3-7.8,3.5-10.9,6.7C-399.9,270-399.3,272.4-397.9,274.5z" />
+                                            <path class="line-icon--has-fill" d="M-426.4,292.8c3.9-1.3,7.2-3.4,9.8-6.3c0.4-2.6-0.5-4.9-2-7c-4.2,1.3-7.8,3.5-10.9,6.7c-0.1,1.9,0.3,3.7,1,5.4L-426.4,292.8z" />
+                                            <polyline class="line-icon--line" points="-442,287.5 -442,299.1 -424.2,310.2" />
+                                            <polyline class="line-icon--line" points="-428.4,291.5 -438.4,285.3 -442,287.5 -424.2,298.7 -420.6,296.4 -426.4,292.8" />
+                                        </svg>
+                                        <div class="demo-step-ui__menu-item__checkbox-button__text">Pillows</div>
+                                        <span class="demo-step-ui__menu-item__checkbox-button__checkbox">
+                                            <svg class="demo-step-ui__line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 8">
+                                                <polyline points="1 4 4 7 10 1" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Options #4 -->
+                        <div class="demo-step-ui__menu-item item--inactive--right">
+                            <h4>Options #4</h4>
+                            <div class="demo-step-ui__menu-item__options">
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                                <p>More options</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile bottom section -->
+                    <div class="demo-step-ui__menu-navigation">
+                        <button class="demo-step-ui__menu-navigation__button-prev button--disabled">
+                            <svg class="demo-step-ui__line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
+                                <line x1="1" y1="5" x2="15" y2="5" />
+                                <line x1="1" y1="5" x2="5" y2="9" />
+                                <line x1="1" y1="5" x2="5" y2="1" />
+                            </svg>
+                            Prev
+                        </button>
+                        <div class="demo-step-ui__menu-navigation__dots">
+                            <!-- <span class="demo-step-ui__menu-navigation__dot dot--active"></span>
+                            <span class="demo-step-ui__menu-navigation__dot"></span>
+                            <span class="demo-step-ui__menu-navigation__dot"></span>
+                            <span class="demo-step-ui__menu-navigation__dot"></span> -->
+                        </div>
+                        <button class="demo-step-ui__menu-navigation__button-next">
+                            Next
+                            <svg class="demo-step-ui__line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
+                                <line x1="1" y1="5" x2="15" y2="5" />
+                                <line x1="11" y1="9" x2="15" y2="5" />
+                                <line x1="11" y1="1" x2="15" y2="5" />
+                            </svg>
+                        </button>
+                    </div>
+                </aside>
+                
+            </section>
+            <!-- Module end -->
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

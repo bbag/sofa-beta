@@ -1,0 +1,831 @@
+/*
+ * Setup stuff
+ */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap");
+/*
+ * Variables
+ */
+/*
+ * Main demo container
+ */
+.demo-step-ui {
+  color: #2E2A25;
+  font-family: "Fira Sans", sans-serif;
+  overflow: hidden;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.demo-step-ui *,
+.demo-step-ui *::before,
+.demo-step-ui *::after {
+  box-sizing: border-box;
+}
+
+.demo-step-ui button {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+}
+
+.demo-step-ui .button--plain {
+  background: none;
+  border: 0;
+  border-radius: 0.25rem;
+  color: #613F98;
+  display: flex;
+  padding: 0.375rem;
+  transition: background-color 350ms cubic-bezier(0.19, 1, 0.22, 1), border-color 350ms cubic-bezier(0.19, 1, 0.22, 1), transform 350ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.demo-step-ui .button--plain:hover {
+  background: rgba(97, 63, 152, 0.15);
+}
+
+/*
+ * Canvas container
+ */
+.demo-step-ui__canvas-container {
+  align-items: center;
+  background: #FAFAFA;
+  display: flex;
+  flex: 1 1 auto;
+  max-height: calc(100vh - 4rem);
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.demo-step-ui__canvas-container #renderCanvas {
+  cursor: grab;
+  display: block;
+  width: 100%;
+}
+
+/*
+ * Title section
+ */
+.demo-step-ui__title-section {
+  align-items: flex-start;
+  background: #FFF;
+  border-bottom: 1px solid #B0B0B0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.demo-step-ui__title-section > *:not(:last-child) {
+  margin-bottom: 0.375rem;
+}
+
+.demo-step-ui__title-section .demo-step-ui__menu-toggle-button {
+  display: none;
+}
+
+.demo-step-ui__title-section--demo {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.demo-step-ui__title-text {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-step-ui__title-section--line-1,
+.demo-step-ui__title-section--line-2 {
+  color: #613F98;
+  display: inline-block;
+  font-size: 3rem;
+  line-height: 0.85;
+  margin: 0.125rem 0;
+  overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.demo-step-ui__title-section--line-1::after,
+.demo-step-ui__title-section--line-2::after {
+  animation: slide-out 500ms cubic-bezier(0.7, 0, 0.3, 1) both;
+  background: #FFF;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transform: translate(0%, 0);
+  width: 100%;
+}
+
+.demo-step-ui__title-section--demo,
+.demo-step-ui__title-section--line-1,
+.demo-step-ui__title-section--line-2,
+.demo-step-ui__title-section__ratings,
+.demo-step-ui__title-section__reviews {
+  animation: pop-in 1.5s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+.demo-step-ui__title-section--line-1 {
+  animation-delay: 100ms;
+}
+
+.demo-step-ui__title-section--line-1::after {
+  animation-delay: 500ms;
+}
+
+.demo-step-ui__title-section--line-2 {
+  animation-delay: 200ms;
+}
+
+.demo-step-ui__title-section--line-2::after {
+  animation-delay: 650ms;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.demo-step-ui__line-icon, .demo-step-ui__line-icon--filled, .demo-step-ui__menu-item__checkbox-button svg .line-icon--line, .demo-step-ui__menu-item__checkbox-button svg .line-icon--has-fill {
+  height: 1.5rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  width: 1.5rem;
+}
+
+.demo-step-ui__line-icon {
+  fill: none;
+}
+
+.demo-step-ui__line-icon--filled {
+  fill: currentColor;
+}
+
+.demo-step-ui__title-section__ratings {
+  align-items: center;
+  animation-delay: 1000ms;
+  display: flex;
+}
+
+.demo-step-ui__title-section__ratings .demo-step-ui__line-icon,
+.demo-step-ui__title-section__ratings .demo-step-ui__line-icon--filled {
+  width: 1.25rem;
+}
+
+.demo-step-ui__title-section__reviews {
+  animation-delay: 1100ms;
+  cursor: pointer;
+  margin-left: 1rem;
+  text-decoration: underline;
+}
+
+/*
+ * Customization menu
+ */
+.demo-step-ui__menu {
+  background: #FFF;
+  border: 1px solid #B0B0B0;
+  border-left: 0;
+  border-right: 0;
+  display: flex;
+  flex-direction: column;
+  height: 3.875rem;
+  transition: height 350ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.menu-is-active .demo-step-ui__menu {
+  height: 19rem;
+}
+
+.demo-step-ui__menu-top {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  margin: 0.75rem 1rem;
+}
+
+.demo-step-ui__menu-top__text {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.demo-step-ui__menu-toggle-button {
+  background: none;
+  border: 0;
+  border-radius: 0.25rem;
+  color: #613F98;
+  cursor: pointer;
+  display: flex;
+  padding: 0.375rem;
+}
+
+.demo-step-ui__menu-toggle-button:hover {
+  background: rgba(97, 63, 152, 0.15);
+}
+
+.demo-step-ui__menu-toggle-button__icon--chevron {
+  transition: transform 350ms cubic-bezier(0.19, 1, 0.22, 1);
+  transform: rotate(-270deg);
+}
+
+.menu-is-active .demo-step-ui__menu .demo-step-ui__menu-toggle-button__icon--chevron {
+  transform: rotate(-90deg);
+}
+
+.demo-step-ui__menu-steps {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.demo-step-ui__menu-item {
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  overflow-y: auto;
+  padding: 0 1rem 1rem;
+  position: absolute;
+  top: 0;
+  transition: opacity 350ms cubic-bezier(0.19, 1, 0.22, 1), transform 350ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 100%;
+}
+
+.demo-step-ui__menu-item > *:first-child {
+  margin-top: 0;
+}
+
+.demo-step-ui__menu-item.item--inactive--left {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.demo-step-ui__menu-item.item--inactive--right {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.demo-step-ui__menu-item__header {
+  margin: 1rem 0;
+}
+
+.demo-step-ui__menu-item__header--highlight {
+  color: #613F98;
+  font-weight: normal;
+}
+
+.demo-step-ui__menu-item__color-options {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(2.25rem, 1fr));
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.demo-step-ui__menu-item__color-item {
+  position: relative;
+}
+
+.demo-step-ui__menu-item__color-item input[type="radio"],
+.demo-step-ui__menu-item__color-item input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.demo-step-ui__menu-item__color-item input[type="radio"]:checked + .demo-step-ui__menu-item__color-button,
+.demo-step-ui__menu-item__color-item input[type="checkbox"]:checked + .demo-step-ui__menu-item__color-button {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25), 0 0 0 5px #FFF, 0 0 0 6px #613F98;
+}
+
+.demo-step-ui__menu-item__color-button {
+  align-items: center;
+  border-radius: 0.125rem;
+  box-shadow: inset 0 0 0 0.0625rem rgba(0, 0, 0, 0.25), 0 0 0 0 #FFF, 0 0 0 0 #613F98;
+  content: "X";
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100%;
+  transition: box-shadow 200ms ease;
+  width: 100%;
+}
+
+.demo-step-ui__menu-item__input-select {
+  margin: 1rem 0;
+  position: relative;
+}
+
+.demo-step-ui__menu-item__input-select select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #FFF;
+  border: 1px solid #B0B0B0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.5rem 0.625rem;
+  transition: border-color 300ms ease;
+  width: 100%;
+}
+
+.demo-step-ui__menu-item__input-select select:hover, .demo-step-ui__menu-item__input-select select:focus {
+  border-color: #613F98;
+  outline: none;
+}
+
+.demo-step-ui__menu-item__input-select select:hover + .demo-step-ui__menu-item__input-select__icon--chevrons, .demo-step-ui__menu-item__input-select select:focus + .demo-step-ui__menu-item__input-select__icon--chevrons {
+  color: #613F98;
+}
+
+.demo-step-ui__menu-item__input-select select + .demo-step-ui__menu-item__input-select__icon--chevrons {
+  background: #FFF;
+  color: rgba(46, 42, 37, 0.5);
+  content: "";
+  display: block;
+  height: 1.5rem;
+  pointer-events: none;
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 300ms ease;
+  width: 1.5rem;
+}
+
+.demo-step-ui__menu-item__input-select select option {
+  cursor: pointer;
+}
+
+.demo-step-ui__menu-item__checkbox-buttons {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-step-ui__menu-item__checkbox-item input[type="radio"],
+.demo-step-ui__menu-item__checkbox-item input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.demo-step-ui__menu-item__checkbox-item input[type="radio"]:checked + .demo-step-ui__menu-item__checkbox-button,
+.demo-step-ui__menu-item__checkbox-item input[type="checkbox"]:checked + .demo-step-ui__menu-item__checkbox-button {
+  border-color: #613F98;
+  color: #613F98;
+}
+
+.demo-step-ui__menu-item__checkbox-item input[type="radio"]:checked + .demo-step-ui__menu-item__checkbox-button .demo-step-ui__menu-item__checkbox-button__checkbox,
+.demo-step-ui__menu-item__checkbox-item input[type="checkbox"]:checked + .demo-step-ui__menu-item__checkbox-button .demo-step-ui__menu-item__checkbox-button__checkbox {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+}
+
+.demo-step-ui__menu-item__checkbox-button {
+  align-items: center;
+  border: 1px solid #B0B0B0;
+  border-radius: 0.25rem;
+  color: #757370;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+  position: relative;
+  transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease;
+  user-select: none;
+}
+
+.demo-step-ui__menu-item__checkbox-button svg {
+  height: auto;
+  max-width: 3.5rem;
+  stroke: currentColor;
+  width: 100%;
+}
+
+.demo-step-ui__menu-item__checkbox-button svg .line-icon--line {
+  fill: none;
+}
+
+.demo-step-ui__menu-item__checkbox-button svg .line-icon--has-fill {
+  fill: currentColor;
+  fill-opacity: 0.4;
+}
+
+.demo-step-ui__menu-item__checkbox-button:hover, .demo-step-ui__menu-item__checkbox-button:focus {
+  color: #2E2A25;
+}
+
+.demo-step-ui__menu-item__checkbox-button:active {
+  background: rgba(97, 63, 152, 0.15);
+  border-color: #613F98;
+}
+
+.demo-step-ui__menu-item__checkbox-button__text {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.demo-step-ui__menu-item__checkbox-button__checkbox {
+  align-items: center;
+  background: #613F98;
+  border-radius: 0.25rem;
+  color: #FFF;
+  display: flex;
+  height: 1.25rem;
+  justify-content: center;
+  left: -0.375rem;
+  opacity: 0;
+  position: absolute;
+  top: -0.375rem;
+  transform: scale(0.1);
+  transition: transform 200ms cubic-bezier(0.19, 1, 0.22, 1), opacity 200ms cubic-bezier(0.19, 1, 0.22, 1), visibility 200ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 1.25rem;
+  visibility: hidden;
+}
+
+.demo-step-ui__menu-item__checkbox-button__checkbox svg {
+  height: 0.5rem;
+  width: 0.6875rem;
+}
+
+.demo-step-ui__menu-navigation {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  margin: 1rem;
+}
+
+.demo-step-ui__menu-navigation__button-prev,
+.demo-step-ui__menu-navigation__button-next {
+  align-items: center;
+  background: #613F98;
+  border: 0;
+  border-radius: 0.25rem;
+  color: #FFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  padding: 0.625rem 0.875rem;
+  transition: background-color 500ms ease-out, opacity 300ms ease;
+  user-select: none;
+}
+
+.demo-step-ui__menu-navigation__button-prev:active,
+.demo-step-ui__menu-navigation__button-next:active {
+  background: #8962C9;
+  transition: background-color 0ms linear;
+}
+
+.demo-step-ui__menu-navigation__button-prev.button--disabled,
+.demo-step-ui__menu-navigation__button-next.button--disabled {
+  background: #2E2A25;
+  opacity: 0.2;
+  pointer-events: none;
+  transition: background-color 500ms ease-out, opacity 300ms ease;
+}
+
+.demo-step-ui__menu-navigation__button-prev svg,
+.demo-step-ui__menu-navigation__button-next svg {
+  height: auto;
+  width: 1rem;
+}
+
+.demo-step-ui__menu-navigation__button-prev svg {
+  margin-right: 0.5rem;
+}
+
+.demo-step-ui__menu-navigation__button-next svg {
+  margin-left: 0.5rem;
+}
+
+.demo-step-ui__menu-navigation__dots {
+  display: flex;
+}
+
+.demo-step-ui__menu-navigation__dot {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  content: "";
+  display: block;
+  height: 0.5rem;
+  margin: 0.25rem;
+  transition: all 250ms ease;
+  width: 0.5rem;
+}
+
+.demo-step-ui__menu-navigation__dot.dot--active {
+  background: #613F98;
+  width: 1.75rem;
+}
+
+/*
+ * Mini Menu
+ */
+.demo-step-ui__mini-menu {
+  align-items: center;
+  border-top: 1px solid #B0B0B0;
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+  margin: 0;
+  overflow-x: auto;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.demo-step-ui__mini-menu__item {
+  margin-right: 0.25rem;
+  position: relative;
+}
+
+.demo-step-ui__mini-menu__item:first-child .demo-step-ui__mini-menu__button {
+  margin-left: 1rem;
+}
+
+.demo-step-ui__mini-menu__item:last-child .demo-step-ui__mini-menu__button {
+  margin-right: 1rem;
+}
+
+.demo-step-ui .demo-step-ui__mini-menu__button {
+  border: 1px solid #B0B0B0;
+  padding: 0.375rem 0.675rem;
+}
+
+.demo-step-ui .demo-step-ui__mini-menu__button:hover, .demo-step-ui .demo-step-ui__mini-menu__button:focus, .demo-step-ui .demo-step-ui__mini-menu__button.mini-menu-item-is-active {
+  border-color: #613F98;
+}
+
+.demo-step-ui .demo-step-ui__mini-menu__button svg {
+  display: block;
+}
+
+.demo-step-ui__mini-menu__button__label {
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.demo-step-ui__mini-menu__popup__close {
+  background: #D22630;
+  border: 0;
+  border-radius: 0.25rem;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  padding: 0.5rem;
+  position: absolute;
+  right: -0.5rem;
+  top: -0.5rem;
+  z-index: 2;
+}
+
+.demo-step-ui__mini-menu__popup__close:hover, .demo-step-ui__mini-menu__popup__close:focus {
+  background: #D22630;
+}
+
+.demo-step-ui__mini-menu__popup__close svg {
+  height: 0.625rem;
+  width: 0.625rem;
+}
+
+.demo-step-ui__mini-menu__popup {
+  background: #FFF;
+  box-shadow: 0 0.25rem 0.875rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  bottom: calc(100% + 1rem);
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  transform: scale(0.89);
+  transform-origin: bottom left;
+  transition: opacity 250ms cubic-bezier(0.19, 1, 0.22, 1), transform 250ms cubic-bezier(0.19, 1, 0.22, 1), visibility 250ms linear;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.demo-step-ui__mini-menu__popup::after {
+  background: #FFF;
+  bottom: -0.25rem;
+  content: "";
+  display: block;
+  position: absolute;
+  transform: translateX(-50%) rotate(45deg);
+  left: 1.125rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.demo-step-ui__mini-menu__popup__content {
+  position: relative;
+}
+
+/*
+ * Gesture icons
+ */
+.demo-step-ui__gesture-icons--touch,
+.demo-step-ui__gesture-icons--mouse {
+  padding: 0.5rem;
+  align-items: center;
+  color: #613F98;
+  font-size: 0.75rem;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.demo-step-ui__gesture-icons--touch {
+  display: flex;
+}
+
+.demo-step-ui__gesture-icons--mouse {
+  display: none;
+}
+
+.demo-step-ui__gesture-icons__icon {
+  margin: 0.5rem;
+  width: 2.625rem;
+}
+
+@media (hover: hover) {
+  .demo-step-ui__gesture-icons--touch {
+    display: none;
+  }
+  .demo-step-ui__gesture-icons--mouse {
+    display: flex;
+  }
+}
+
+/*
+ * Media queries
+ */
+/* 576px */
+/* 768px */
+@media screen and (min-width: 48rem) {
+  .demo-step-ui {
+    display: grid;
+    grid-template-areas: "canvas    title" "canvas    menu" "mini-menu mini-menu";
+    grid-template-columns: 1fr 0;
+    grid-template-rows: auto 1fr auto;
+    max-height: 100vh;
+    overflow-x: hidden;
+    transition: grid-template-columns 350ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .demo-step-ui.menu-is-active {
+    grid-template-columns: 1fr 22rem;
+  }
+  .demo-step-ui__menu,
+  .demo-step-ui__title-section {
+    border-bottom: 0;
+    border-left: 1px solid #B0B0B0;
+    width: 22rem;
+  }
+  .menu-is-active .demo-step-ui__menu, .menu-is-active
+  .demo-step-ui__title-section {
+    transform: translateX(0);
+  }
+  .demo-step-ui__title-section {
+    border-bottom: unset;
+    grid-area: title;
+    position: relative;
+    z-index: 2;
+  }
+  .demo-step-ui__title-section .demo-step-ui__menu-toggle-button {
+    display: flex;
+    padding-left: 0.75rem;
+    position: absolute;
+    right: calc(100% + 1rem);
+    top: 1rem;
+  }
+  .demo-step-ui__title-section .demo-step-ui__menu-toggle-button__label-hide,
+  .demo-step-ui__title-section .demo-step-ui__menu-toggle-button__label-show {
+    white-space: nowrap;
+  }
+  .demo-step-ui__title-section .demo-step-ui__menu-toggle-button__label-hide {
+    display: none;
+  }
+  .menu-is-active .demo-step-ui__title-section .demo-step-ui__menu-toggle-button__label-hide {
+    display: block;
+  }
+  .menu-is-active .demo-step-ui__title-section .demo-step-ui__menu-toggle-button__label-show {
+    display: none;
+  }
+  .demo-step-ui__canvas-container {
+    grid-area: canvas;
+  }
+  .demo-step-ui__canvas-container #renderCanvas {
+    height: 100%;
+    width: auto;
+  }
+  .demo-step-ui__menu {
+    border-top: 0;
+    grid-area: menu;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+    z-index: 3;
+  }
+  .menu-is-active .demo-step-ui__menu {
+    height: 100%;
+  }
+  .menu-is-active .demo-step-ui__menu-toggle-button {
+    transform: translateX(0);
+  }
+  .demo-step-ui__menu-toggle-button__icon--chevron {
+    transform: rotate(0);
+  }
+  .menu-is-active .demo-step-ui__menu-toggle-button__icon--chevron {
+    transform: rotate(-180deg);
+  }
+  .demo-step-ui__menu-top {
+    display: none;
+  }
+  .demo-step-ui__menu-steps {
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 0 1rem;
+  }
+  .demo-step-ui__menu-item {
+    height: auto;
+    position: relative;
+  }
+  .demo-step-ui__menu-item:not(:last-child) {
+    padding-bottom: 2rem;
+  }
+  .demo-step-ui__menu-item.item--inactive--left {
+    opacity: 1;
+    transform: unset;
+  }
+  .demo-step-ui__menu-item.item--inactive--right {
+    opacity: 1;
+    transform: unset;
+  }
+  .demo-step-ui__menu-item__color-options {
+    gap: 0.675rem;
+    grid-template-columns: repeat(auto-fill, minmax(1.75rem, 1fr));
+  }
+  .demo-step-ui__menu-item__color-item input[type="radio"]:checked + .demo-step-ui__menu-item__color-button,
+  .demo-step-ui__menu-item__color-item input[type="checkbox"]:checked + .demo-step-ui__menu-item__color-button {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25), 0 0 0 3px #FFF, 0 0 0 4px #613F98;
+  }
+  .demo-step-ui__menu-item__checkbox-button:hover {
+    background: rgba(97, 63, 152, 0.15);
+    border-color: #613F98;
+  }
+  .demo-step-ui__menu-navigation {
+    display: none;
+  }
+  .demo-step-ui__mini-menu {
+    grid-area: mini-menu;
+    justify-content: center;
+  }
+}
+
+/* 992px */
+/* 1200px */
